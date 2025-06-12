@@ -1,0 +1,9 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    padding: 20px;
+}
+#gallery img {
+    width: 150px;
+    margin: 10px;
+}
