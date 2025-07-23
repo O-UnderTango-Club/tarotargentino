@@ -1,14 +1,37 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tarot Argentino</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tarot Argentino</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    <h1>Bienvenido al Tarot Argentino</h1>
-    <div id="gallery"></div>
-    <script src="script.js"></script>
+  <h1>Bienvenido al Tarot Argentino</h1>
+   
+  <p>Hacé tu pregunta y revelá tu destino...</p>
+  <input type="text" id="pregunta" placeholder="Escribí tu pregunta" />
+  <button onclick="tirarCarta()">Tirar carta</button>
+
+  <div id="resultado" class="carta"></div>
+
+  <div class="scroll-espacio"></div>
+  <section class="secundaria">
+  <h2>Dejá tu comentario</h2>
+  <form id="formComentario">
+    <input type="text" name="nombre" placeholder="Tu nombre" required><br>
+    <textarea name="comentario" placeholder="Escribí tu comentario (máx. 300 caracteres)" maxlength="300" required></textarea><br>
+    <button type="submit">Enviar comentario</button>
+  </form>
+  <div id="listaComentarios"></div>
+
+  <p id="contadorVisitas"></p>
+</section>
+
+  <footer class="footer-aviso">
+  Sitio en construcción — Última actualización: 26/06/2025 - Tarot Argentino - Ø.
+</footer>
+
+  <script src="script.js"></script>
 </body>
 </html>

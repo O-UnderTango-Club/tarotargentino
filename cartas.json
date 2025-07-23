@@ -1,0 +1,91 @@
+[
+  {
+    "nombre": "El Loco",
+    "imagen": "assets/arcanos/00-el-loco.webp",
+    "texto": "El Loco representa el inicio del viaje, la libertad de explorar lo desconocido y la confianza en el destino. Es impulso puro, sin estructura ni miedo."
+  },
+  
+  {
+  "nombre": "El Asador Maestro",
+  "imagen": "assets/arcanos/1-el-asador-maestro.webp",
+  "texto": "El Asador Maestro representa la alquimia de lo cotidiano. Invita a encontrar lo sagrado en los rituales simples, a reunir y nutrir. Esta carta habla de la maestría alcanzada con paciencia y fuego lento."
+  },
+  {
+  "nombre": "La Sacerdotisa",
+  "imagen": "assets/arcanos/2-la-sacerdotisa.webp",
+  "texto": "La Sacerdotisa representa el conocimiento oculto, la intuición y la sabiduría ancestral. Es la guardiana de los misterios y guía espiritual en momentos de introspección."
+  },
+  {
+  "nombre": "La Emperatriz",
+  "imagen": "assets/arcanos/3-la-emperatriz.webp",
+  "texto": "La Emperatriz representa la fertilidad, la creación, la belleza y la conexión con la naturaleza. Es símbolo de abundancia y amor maternal. Esta carta sugiere que estás en un momento fértil para tus ideas, relaciones o proyectos. Escuchá tu intuición y dejá crecer lo que nace desde el corazón."
+  },
+  {
+  "nombre": "El Emperador",
+  "imagen": "assets/arcanos/4-el-emperador.webp",
+  "texto": "El Emperador representa la autoridad, la estructura y el control. Es símbolo de estabilidad, disciplina y liderazgo firme. Esta carta sugiere que es momento de asumir el mando de tu vida, establecer límites claros y construir sobre bases sólidas. También puede indicar la presencia de una figura paterna influyente."
+  },
+  {
+  "nombre": "El Hierofante",
+  "imagen": "assets/arcanos/5-el-hierofante.webp",
+  "texto": "El Hierofante simboliza la sabiduría ancestral, la tradición y la guía espiritual. Representa el conocimiento transmitido por instituciones, maestros o figuras de autoridad espiritual. Esta carta sugiere buscar consejo en lo establecido, respetar rituales y aprender de fuentes confiables antes de actuar."
+  },
+  {
+  "nombre": "Los Enamorados",
+  "imagen": "assets/arcanos/6-los-enamorados.webp",
+  "texto": "Los Enamorados representan el amor, la unión y las decisiones que conectan el corazón con el camino de vida. Esta carta invita a escuchar la voz interior al enfrentar una elección importante, y simboliza tanto la atracción emocional como el compromiso profundo con uno mismo o con otro ser."
+  },
+  {
+  "nombre": "El Carro",
+  "imagen": "assets/arcanos/7-el-carro.webp",
+  "texto": "El Carro simboliza la victoria, el avance decidido y el control de fuerzas opuestas. Representa determinación, voluntad de conquistar obstáculos y equilibrio entre instinto y razón. Esta carta impulsa a avanzar con confianza, sin perder de vista el rumbo elegido."
+  },
+  {
+  "nombre": "La Justicia",
+  "imagen": "assets/arcanos/8-la-justicia.webp",
+  "texto": "La Justicia representa el equilibrio, la verdad y la responsabilidad. Nos recuerda que nuestras decisiones tienen consecuencias y que debemos actuar con integridad. Esta carta invita a mirar con objetividad, a reconocer lo que es justo y a asumir el resultado de nuestros actos."
+  },
+  {
+  "nombre": "El Ermitaño",
+  "imagen": "assets/arcanos/9-el-ermitanio.webp",
+  "texto": "El Ermitaño simboliza la búsqueda interior y el poder del conocimiento silencioso. Esta carta invita a apartarse del ruido del mundo para conectarse con la sabiduría propia, profundizar en lo esencial y encontrar respuestas en la oscuridad."
+  },
+  {
+  "nombre": "La Rueda de la Fortuna",
+  "imagen": "assets/arcanos/10-la-rueda-de-la-fortuna.webp",
+  "texto": "La Rueda de la Fortuna representa los ciclos inevitables de la vida, el cambio constante y el destino en movimiento. Esta carta habla de giros inesperados, suerte cambiante y del poder de adaptarse al ritmo del universo. Nada es permanente."
+  },
+  {
+  "nombre": "La Fuerza",
+  "imagen": "assets/arcanos/11-la-fuerza.webp",
+  "texto": "La Fuerza habla del poder que nace de la calma interior. No es la violencia la que domina al puma, sino la dulzura. Esta carta enseña que el coraje verdadero es el que sabe esperar y contener sin reprimir."
+  },
+  {
+  "nombre": "El Colgado",
+  "imagen": "assets/arcanos/12-el-colgado.webp",
+  "texto": "El Colgado representa una pausa necesaria, un momento de rendición o sacrificio voluntario. Es la invitación a ver las cosas desde otra perspectiva, a invertir las prioridades para encontrar claridad. En el Tarot Argentino, este gaucho suspendido entre cielo y tierra revela la sabiduría del que espera con paciencia, el que no actúa por impulso sino por conciencia del ritmo natural de la vida."
+  },
+  {
+  "nombre": "La Muerte",
+  "imagen": "assets/arcanos/13-la-mort.jpg",
+  "texto": "La Muerte no anuncia un final, sino una transformación inevitable. Representa la caída de viejos sistemas, el derrumbe de lo que ya no sostiene y la necesidad de renacer desde las ruinas. En el Tarot Argentino, La Muerte lleva la bandera rota de lo que fuimos, pero también el poder de construir algo nuevo."
+  },
+  {
+  "numero": 14,
+  "nombre": "La Templanza",
+  "imagen": "14-la-templanza.webp",
+  "descripcion": "En el corazón de la selva, la guardiana de las aguas mezcla el río y la luz. Viste ropajes de fiesta, pero su mayor don es la paciencia: derrama vida gota a gota, en perfecto equilibrio. Su pulso es el de la naturaleza; ni apura ni retiene, solo fluye y confía. La Templanza es el arte de unir opuestos, de sanar sin prisa y esperar sin ansiedad. Es el puente sutil entre lo que fue y lo que será.",
+  "clave": "Equilibrio, paciencia, armonía, sanación, fluidez"
+  },
+  {
+  "numero": 15,
+  "nombre": "El Diablo",
+  "imagen": "15-thedev.webp",
+  "descripcion": "En lo alto de la fiesta, entre tambores y máscaras, danza el Diablo: señor del deseo, la tentación y el desenfreno. Su poder no está en los cuernos, sino en la risa seductora que invita a romper las cadenas del pudor. Quien lo mira a los ojos siente vértigo y fascinación: lo prohibido llama, lo oculto vibra. El Diablo te enfrenta a tus pasiones más intensas, pero también a la libertad de elegir. ¿Serás esclavo de tus sombras o director de tu propio carnaval?",
+  "clave": "Deseo, tentación, pasión, instinto, liberación"
+  }
+
+
+
+
+]

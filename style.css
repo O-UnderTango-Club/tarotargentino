@@ -1,9 +1,87 @@
 body {
-    font-family: Arial, sans-serif;
-    text-align: center;
-    padding: 20px;
+  font-family: Georgia, serif;
+  text-align: center;
+  padding: 40px;
+  background-color: #fff8e7;
+  color: #333;
 }
-#gallery img {
-    width: 150px;
-    margin: 10px;
+
+input {
+  padding: 10px;
+  font-size: 1rem;
+  margin: 10px;
+  width: 250px;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.carta img {
+  width: 500px; /* o 400px si querés aún más grande */
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 20px auto;
+}
+
+.footer-aviso {
+  background-color: #fffae6;
+  color: #a66;
+  text-align: center;
+  padding: 10px;
+  font-weight: bold;
+  border-top: 1px solid #daa;
+  font-size: 14px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  z-index: 999;
+}
+
+body {
+  padding-bottom: 60px; /* deja espacio para que el footer fijo no tape contenido */
+}
+
+.secundaria {
+  margin-top: 60px;
+  padding: 30px;
+  background-color: #fef8e1;
+  border-top: 2px dashed #ccc;
+  border-bottom: 2px dashed #ccc;
+}
+
+#formComentario textarea {
+  width: 80%;
+  height: 80px;
+  font-size: 0.9rem;
+  padding: 10px;
+  margin: 10px 0;
+  resize: none;
+}
+
+#listaComentarios {
+  margin-top: 20px;
+  text-align: left;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#listaComentarios p {
+  margin-bottom: 10px;
+  font-size: 0.95rem;
+}
+
+#contadorVisitas {
+  margin-top: 30px;
+  font-weight: bold;
+  font-size: 0.95rem;
+  color: #555;
+}
+
+.scroll-espacio {
+  height: 100vh; /* espacio vacío del tamaño de la ventana */
 }
