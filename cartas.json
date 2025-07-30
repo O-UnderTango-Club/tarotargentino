@@ -90,7 +90,35 @@
   "imagen": "17-la estrella.webp",
   "descripcion": "Bajo la bóveda de un cielo andino, la Estrella guía en silencio. Dos mujeres siembran agua y esperanza, renovando el cauce de la vida. Cada estrella es promesa: después de la tormenta, llega la calma. La Estrella invita a confiar, a dejarse iluminar y a renacer con fe humilde. Es el resplandor que sana heridas, la inspiración que enciende futuros. Mira arriba: la esperanza te pertenece.",
   "clave": "Esperanza, inspiración, fe, renovación, sanación"
-}
+  },
+  {
+  "numero": 18,
+  "nombre": "La Luna",
+  "imagen": "18-la luna.webp",
+  "descripcion": "Entre reflejos y sombras, la Luna ilumina caminos de misterio. El gato y el quirquincho dialogan en silencio bajo un cielo lleno de secretos. Las torres vigilan desde lejos, pero el agua revela lo oculto. La Luna invita a explorar la intuición, a no temer a la noche interna, a soñar despierto. A veces el miedo distorsiona, otras veces guía. Escuchá tus presentimientos: hay verdades que solo brillan cuando todo parece confuso.",
+  "clave": "Intuición, misterio, sueños, engaños, autoconocimiento"
+  },
+  {
+  "numero": 19,
+  "nombre": "El Sol",
+  "imagen": "19-el-sol.webp",
+  "descripcion": "Bajo el sol radiante y las banderas celestes, el juego es celebración y encuentro. Los girasoles siguen la luz y los niños corren tras la pelota, sin miedo ni tristeza. El Sol es la energía vital que disipa dudas, la confianza recuperada y la alegría compartida. Después de la noche, llega la claridad; después de la prueba, el gozo simple de vivir. Dejá que tu verdad brille: la felicidad se multiplica cuando se reparte.",
+  "clave": "Alegría, éxito, claridad, vitalidad, celebración"
+  },
+  {
+  "numero": 20,
+  "nombre": "El Juicio",
+  "imagen": "20-el-juicio.webp",
+  "descripcion": "En la cima de la montaña, el Juicio resuena como un eco ancestral. Los espíritus despiertan al llamado del cuerno, listos para renacer. Esta carta invita a reflexionar sobre las acciones pasadas, a asumir responsabilidades y a buscar redención. Es el momento de evaluar lo vivido, aprender de los errores y prepararse para un nuevo comienzo. El Juicio no es un castigo, sino una oportunidad de transformación profunda.",
+  "clave": "Renacimiento, evaluación, responsabilidad, transformación"
+  },
+  {
+  "numero": 21,
+  "nombre": "El Mundo",
+  "imagen": "21-el-mundo.webp",
+  "descripcion": "En el centro del universo, el Mundo celebra la plenitud alcanzada. La mujer danza rodeada de símbolos de los cuatro elementos: tierra, agua, aire y fuego. Esta carta representa la culminación de un ciclo, la realización de metas y el equilibrio perfecto entre cuerpo y espíritu. El Mundo invita a disfrutar del viaje recorrido, a reconocer los logros y a abrirse a nuevas posibilidades. Todo está conectado; todo es parte del mismo tejido cósmico.",
+  "clave": "Plenitud, realización, equilibrio, conexión universal"
+  }
 
 
 
