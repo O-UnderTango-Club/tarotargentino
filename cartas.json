@@ -118,7 +118,16 @@
   "imagen": "21-el-mundo.webp",
   "descripcion": "En el centro del universo, el Mundo celebra la plenitud alcanzada. La mujer danza rodeada de símbolos de los cuatro elementos: tierra, agua, aire y fuego. Esta carta representa la culminación de un ciclo, la realización de metas y el equilibrio perfecto entre cuerpo y espíritu. El Mundo invita a disfrutar del viaje recorrido, a reconocer los logros y a abrirse a nuevas posibilidades. Todo está conectado; todo es parte del mismo tejido cósmico.",
   "clave": "Plenitud, realización, equilibrio, conexión universal"
+  },
+  {
+  "numero": 22,
+  "nombre": "As de Copas",
+  "imagen": "assets/arcanos/copas/01-copas-malbec.webp",
+  "descripcion": "El inicio de los sentimientos, abundancia emocional, bendiciones y nuevas conexiones. Nota de color: El malbec es la uva emblemática de Argentina. El As de Copas invita a abrir el corazón a nuevas experiencias sensitivas guiadas por la intuición, a recibir bendiciones emocionales y a compartir momentos significativos con los demás.",
+  "clave": "Amor, inicio, bendición, abundancia"
   }
+
+
 
 
 
