@@ -125,7 +125,16 @@
   "imagen": "assets/arcanos/copas/01-copas-malbec.webp",
   "descripcion": "El inicio de los sentimientos, abundancia emocional, bendiciones y nuevas conexiones. Nota de color: El malbec es la uva emblemática de Argentina. El As de Copas invita a abrir el corazón a nuevas experiencias sensitivas guiadas por la intuición, a recibir bendiciones emocionales y a compartir momentos significativos con los demás.",
   "clave": "Amor, inicio, bendición, abundancia"
+  },
+  {
+  "palo": "copas",
+  "numero": 2,
+  "nombre": "2 de Copas",
+  "imagen": "assets/arcanos/copas/2-de-copas-cabernet-sauvignon.webp",
+  "descripcion": "Dos copas se alzan para brindar, sellando unión, encuentro y reciprocidad. El 2 de Copas celebra el acuerdo entre iguales, el inicio de una relación genuina o un pacto con uno mismo. Simboliza la armonía, la confianza y el placer de compartir lo esencial.",
+  "clave": "Unión, acuerdo, amor, reciprocidad, alianza"
   }
+
 
 
 
