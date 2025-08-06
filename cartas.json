@@ -133,7 +133,16 @@
   "imagen": "assets/arcanos/copas/2-de-copas-cabernet-sauvignon.webp",
   "descripcion": "Dos copas se alzan para brindar, sellando unión, encuentro y reciprocidad. El 2 de Copas celebra el acuerdo entre iguales, el inicio de una relación genuina o un pacto con uno mismo. Simboliza la armonía, la confianza y el placer de compartir lo esencial.",
   "clave": "Unión, acuerdo, amor, reciprocidad, alianza"
+  },
+  {
+  "palo": "copas",
+  "numero": 3,
+  "nombre": "3 de Copas",
+  "imagen": "assets/arcanos/copas/3-de-copas-vino-dulce.webp",
+  "descripcion": "Tres copas brindan en lo alto, desbordando alegría y burbujas de oro. El 3 de Copas es celebración compartida, amistad sincera y gozo colectivo. Marca un momento de encuentros felices, gratitud y cosecha de lo sembrado junto a otros.",
+  "clave": "Celebración, amistad, alegría, comunidad, gratitud"
   }
+
 
 
 
