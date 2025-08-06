@@ -73,56 +73,56 @@
   {
   "numero": 14,
   "nombre": "La Templanza",
-  "imagen": "14-la-templanza.webp",
+  "imagen": "assets/arcanos/14-la-templanza.webp",
   "descripcion": "En el corazón de la selva, la guardiana de las aguas mezcla el río y la luz. Viste ropajes de fiesta, pero su mayor don es la paciencia: derrama vida gota a gota, en perfecto equilibrio. Su pulso es el de la naturaleza; ni apura ni retiene, solo fluye y confía. La Templanza es el arte de unir opuestos, de sanar sin prisa y esperar sin ansiedad. Es el puente sutil entre lo que fue y lo que será.",
   "clave": "Equilibrio, paciencia, armonía, sanación, fluidez"
   },
   {
   "numero": 15,
   "nombre": "El Diablo",
-  "imagen": "15-thedev.webp",
+  "imagen": "assets/arcanos/15-thedev.webp",
   "descripcion": "En lo alto de la fiesta, entre tambores y máscaras, danza el Diablo: señor del deseo, la tentación y el desenfreno. Su poder no está en los cuernos, sino en la risa seductora que invita a romper las cadenas del pudor. Quien lo mira a los ojos siente vértigo y fascinación: lo prohibido llama, lo oculto vibra. El Diablo te enfrenta a tus pasiones más intensas, pero también a la libertad de elegir. ¿Serás esclavo de tus sombras o director de tu propio carnaval?",
   "clave": "Deseo, tentación, pasión, instinto, liberación"
   },
   {
   "numero": 17,
   "nombre": "La Estrella",
-  "imagen": "17-la estrella.webp",
+  "imagen": "assets/arcanos/17-la estrella.webp",
   "descripcion": "Bajo la bóveda de un cielo andino, la Estrella guía en silencio. Dos mujeres siembran agua y esperanza, renovando el cauce de la vida. Cada estrella es promesa: después de la tormenta, llega la calma. La Estrella invita a confiar, a dejarse iluminar y a renacer con fe humilde. Es el resplandor que sana heridas, la inspiración que enciende futuros. Mira arriba: la esperanza te pertenece.",
   "clave": "Esperanza, inspiración, fe, renovación, sanación"
   },
   {
   "numero": 18,
   "nombre": "La Luna",
-  "imagen": "18-la luna.webp",
+  "imagen": "assets/arcanos/18-la luna.webp",
   "descripcion": "Entre reflejos y sombras, la Luna ilumina caminos de misterio. El gato y el quirquincho dialogan en silencio bajo un cielo lleno de secretos. Las torres vigilan desde lejos, pero el agua revela lo oculto. La Luna invita a explorar la intuición, a no temer a la noche interna, a soñar despierto. A veces el miedo distorsiona, otras veces guía. Escuchá tus presentimientos: hay verdades que solo brillan cuando todo parece confuso.",
   "clave": "Intuición, misterio, sueños, engaños, autoconocimiento"
   },
   {
   "numero": 19,
   "nombre": "El Sol",
-  "imagen": "19-el-sol.webp",
+  "imagen": "assets/arcanos/19-el-sol.webp",
   "descripcion": "Bajo el sol radiante y las banderas celestes, el juego es celebración y encuentro. Los girasoles siguen la luz y los niños corren tras la pelota, sin miedo ni tristeza. El Sol es la energía vital que disipa dudas, la confianza recuperada y la alegría compartida. Después de la noche, llega la claridad; después de la prueba, el gozo simple de vivir. Dejá que tu verdad brille: la felicidad se multiplica cuando se reparte.",
   "clave": "Alegría, éxito, claridad, vitalidad, celebración"
   },
   {
   "numero": 20,
   "nombre": "El Juicio",
-  "imagen": "20-el-juicio.webp",
+  "imagen": "assets/arcanos/20-el-juicio.webp",
   "descripcion": "En la cima de la montaña, el Juicio resuena como un eco ancestral. Los espíritus despiertan al llamado del cuerno, listos para renacer. Esta carta invita a reflexionar sobre las acciones pasadas, a asumir responsabilidades y a buscar redención. Es el momento de evaluar lo vivido, aprender de los errores y prepararse para un nuevo comienzo. El Juicio no es un castigo, sino una oportunidad de transformación profunda.",
   "clave": "Renacimiento, evaluación, responsabilidad, transformación"
   },
   {
   "numero": 21,
   "nombre": "El Mundo",
-  "imagen": "21-el-mundo.webp",
+  "imagen": "assets/arcanos/21-el-mundo.webp",
   "descripcion": "En el centro del universo, el Mundo celebra la plenitud alcanzada. La mujer danza rodeada de símbolos de los cuatro elementos: tierra, agua, aire y fuego. Esta carta representa la culminación de un ciclo, la realización de metas y el equilibrio perfecto entre cuerpo y espíritu. El Mundo invita a disfrutar del viaje recorrido, a reconocer los logros y a abrirse a nuevas posibilidades. Todo está conectado; todo es parte del mismo tejido cósmico.",
   "clave": "Plenitud, realización, equilibrio, conexión universal"
   },
   {
   "numero": 22,
   "nombre": "As de Copas",
-  "imagen": "assets/arcanos/copas/01-copas-malbec.webp",
+  "imagen": "assets/copas/01-copas-malbec.webp",
   "descripcion": "El inicio de los sentimientos, abundancia emocional, bendiciones y nuevas conexiones. Nota de color: El malbec es la uva emblemática de Argentina. El As de Copas invita a abrir el corazón a nuevas experiencias sensitivas guiadas por la intuición, a recibir bendiciones emocionales y a compartir momentos significativos con los demás.",
   "clave": "Amor, inicio, bendición, abundancia"
   },
@@ -130,7 +130,7 @@
   "palo": "copas",
   "numero": 2,
   "nombre": "2 de Copas",
-  "imagen": "assets/arcanos/copas/2-de-copas-cabernet-sauvignon.webp",
+  "imagen": "assets/copas/2-de-copas-cabernet-sauvignon.webp",
   "descripcion": "Dos copas se alzan para brindar, sellando unión, encuentro y reciprocidad. El 2 de Copas celebra el acuerdo entre iguales, el inicio de una relación genuina o un pacto con uno mismo. Simboliza la armonía, la confianza y el placer de compartir lo esencial.",
   "clave": "Unión, acuerdo, amor, reciprocidad, alianza"
   },
@@ -138,7 +138,7 @@
   "palo": "copas",
   "numero": 3,
   "nombre": "3 de Copas",
-  "imagen": "assets/arcanos/copas/3-de-copas-vino-dulce.webp",
+  "imagen": "assets/copas/3-de-copas-vino-dulce.webp",
   "descripcion": "Tres copas brindan en lo alto, desbordando alegría y burbujas de oro. El 3 de Copas es celebración compartida, amistad sincera y gozo colectivo. Marca un momento de encuentros felices, gratitud y cosecha de lo sembrado junto a otros.",
   "clave": "Celebración, amistad, alegría, comunidad, gratitud"
   }
