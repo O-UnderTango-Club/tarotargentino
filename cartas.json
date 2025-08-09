@@ -141,7 +141,16 @@
   "imagen": "assets/copas/3-de-copas-vino-dulce.webp",
   "descripcion": "Tres copas brindan en lo alto, desbordando alegría y burbujas de oro. El 3 de Copas es celebración compartida, amistad sincera y gozo colectivo. Marca un momento de encuentros felices, gratitud y cosecha de lo sembrado junto a otros.",
   "clave": "Celebración, amistad, alegría, comunidad, gratitud"
+  },
+  {
+  "palo": "copas",
+  "numero": 4,
+  "nombre": "4 de Copas",
+  "imagen": "assets/arcanos/copas/4-de-copas-cabernet-franc.webp",
+  "descripcion": "Cuatro copas reposan en equilibrio, reflejando un paisaje sereno de viñedos al atardecer. El 4 de Copas invita a la introspección y al replanteo de deseos y prioridades. A veces, la abundancia no se reconoce hasta que se mira con nuevos ojos. Es un llamado a salir del letargo y abrirse a nuevas oportunidades.",
+  "clave": "Reflexión, reevaluación, oportunidad, introspección"
   }
+
 
 
 
