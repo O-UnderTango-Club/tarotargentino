@@ -149,15 +149,16 @@
   "imagen": "assets/arcanos/copas/4-de-copas-cabernet-franc.webp",
   "descripcion": "Cuatro copas reposan en equilibrio, reflejando un paisaje sereno de viñedos al atardecer. El 4 de Copas invita a la introspección y al replanteo de deseos y prioridades. A veces, la abundancia no se reconoce hasta que se mira con nuevos ojos. Es un llamado a salir del letargo y abrirse a nuevas oportunidades.",
   "clave": "Reflexión, reevaluación, oportunidad, introspección"
+  },
+  {
+  "palo": "copas",
+  "numero": 5,
+  "nombre": "5 de Copas",
+  "imagen": "assets/copas/5-de-copas-syrah.webp",
+  "descripcion": "Cinco copas enmarcan el vino oscuro: tres señalan lo perdido, dos aún sostienen lo que queda. El 5 de Copas es el momento del duelo y la desilusión, pero también el inicio de la aceptación. Mirar de frente lo que duele para soltarlo y volver a elegir. Como el syrah, de la leveza nace un cuerpo más profundo.",
+  "clave": "Pérdida, duelo, aceptación, aprendizaje, recuperación"
   }
 
 
-
-
-
-
-
-
-
-
+  
 ]
