@@ -1,13 +1,12 @@
 <?php
-$archivo = 'visitas.txt';
+header('Content-Type: application/json; charset=UTF-8');
+header('Cache-Control: no-store');
 
-if (!file_exists($archivo)) {
-    file_put_contents($archivo, 0);
-}
+$archivo = __DIR__ . '/visitas.txt';
+if (!file_exists($archivo)) file_put_contents($archivo, '0');
 
-$contador = (int)file_get_contents($archivo);
-$contador++;
-file_put_contents($archivo, $contador);
+$visitas = (int)trim(@file_get_contents($archivo));
+$visitas++;
+file_put_contents($archivo, (string)$visitas, LOCK_EX);
 
-echo $contador;
-?>
+echo json_encode(['ok'=>true,'visitas'=>$visitas]);
