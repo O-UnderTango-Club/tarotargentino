@@ -33,18 +33,23 @@
     Sitio en construcción — Última actualización: 26/06/2025 - Tarot Argentino - Ø.
   </footer>
 
-  <!-- Tu lógica principal -->
+  <!-- Lógica principal de la app -->
   <script src="script.js" defer></script>
 
-  <!-- Incremento y lectura del contador de visitas -->
+  <!-- Contador de visitas -->
   <script>
     document.addEventListener('DOMContentLoaded', async () => {
       try {
-        const r = await fetch('./registrar_visita.php', { method: 'POST', cache: 'no-store' });
-        const txt = await r.text();
+        const r = await fetch('/tarot/registrar_visita.php?ts=' + Date.now(), {
+          method: 'POST',
+          cache: 'no-store'
+        });
+        const body = await r.text();
         let visitas;
-        try { visitas = JSON.parse(txt).visitas; } catch { visitas = parseInt(txt, 10) || 0; }
-        document.getElementById('contadorVisitas').textContent = 'Visitas al sitio: ' + visitas;
+        try { visitas = JSON.parse(body).visitas; }
+        catch { visitas = parseInt(body, 10) || 0; }
+        const lbl = document.getElementById('contadorVisitas');
+        if (lbl) lbl.textContent = 'Visitas al sitio: ' + visitas;
       } catch (e) {
         console.error('Error contador visitas:', e);
       }
