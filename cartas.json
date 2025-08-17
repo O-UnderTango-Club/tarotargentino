@@ -157,7 +157,16 @@
   "imagen": "assets/copas/5-de-copas-syrah.webp",
   "descripcion": "Cinco copas enmarcan el vino oscuro: tres señalan lo perdido, dos aún sostienen lo que queda. El 5 de Copas es el momento del duelo y la desilusión, pero también el inicio de la aceptación. Mirar de frente lo que duele para soltarlo y volver a elegir. Como el syrah, de la leveza nace un cuerpo más profundo.",
   "clave": "Pérdida, duelo, aceptación, aprendizaje, recuperación"
+  },
+  {
+  "palo": "copas",
+  "numero": 6,
+  "nombre": "6 de Copas",
+  "imagen": "assets/copas/6-de-copas-inocencia-con-bonarda.webp",
+  "descripcion": "Seis copas sobre la mesa evocan memorias de infancia y cosechas compartidas. El 6 de Copas trae nostalgia amable, gestos de ternura y la alegría simple de lo conocido. Bonarda que reconcilia: mirar atrás para recordar quién sos y, desde ahí, volver a brindar.",
+  "clave": "Nostalgia, ternura, memoria, reconciliación, alegría simple"
   }
+
 
 
   
