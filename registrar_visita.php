@@ -1,32 +1,52 @@
 <?php
-// CORRECCIÓN: Ahora revisa la ruta completa incluyendo la carpeta /tarot/.
-if (isset($_SERVER['REQUEST_URI']) && strpos($_SERVER['REQUEST_URI'], 'favicon.ico') !== false) {
-    exit();
-}
-
-// Envía las cabeceras para asegurar que la respuesta sea JSON y no se guarde en caché.
 header('Content-Type: application/json; charset=UTF-8');
 header('Cache-Control: no-store');
-
-// Oculta errores de PHP para no romper el formato JSON de la respuesta.
 ini_set('display_errors', 0);
 
-// Define la ruta al archivo que guarda las visitas.
-$archivo = __DIR__ . '/visitas.txt';
+// Solo 1 copia de este archivo: idealmente en /public_html/tarot/ (no dentro de /assets)
 
-// Si el archivo no existe, lo crea con el valor '0'.
-if (!file_exists($archivo)) {
-    file_put_contents($archivo, '0');
+$archivo = __DIR__ . '/visitas.txt';
+if (!file_exists($archivo)) file_put_contents($archivo, '0');
+
+// Incrementar SOLAMENTE para POST
+$method = $_SERVER['REQUEST_METHOD'] ?? 'GET';
+
+// Antidoble: si dos requests llegan casi juntas en la MISMA sesión, solo cuenta 1
+session_start();
+$ahora = microtime(true);
+$ultimo = isset($_SESSION['__ultima_visita']) ? (float)$_SESSION['__ultima_visita'] : 0.0;
+$delta = $ahora - $ultimo;
+
+// Si no es POST, devolveme el valor sin incrementar
+if ($method !== 'POST') {
+  $visitas = (int)trim(@file_get_contents($archivo));
+  echo json_encode(['ok' => true, 'visitas' => $visitas, 'skipped' => true, 'reason' => 'not-post']);
+  exit;
 }
 
-// Lee el número actual de visitas, lo convierte a un entero.
-$visitas = (int)trim(@file_get_contents($archivo));
+// Si ya contamos hace < 1.0s en esta sesión, no vuelvas a contar
+if ($delta < 1.0) {
+  $visitas = (int)trim(@file_get_contents($archivo));
+  echo json_encode(['ok' => true, 'visitas' => $visitas, 'skipped' => true, 'reason' => 'throttled']);
+  exit;
+}
 
-// Incrementa el contador en uno.
+// Incremento atómico con bloqueo de archivo
+$fp = fopen($archivo, 'c+');
+if (!$fp) { http_response_code(500); echo json_encode(['ok'=>false, 'error'=>'cant_open']); exit; }
+
+flock($fp, LOCK_EX);
+$contenido = stream_get_contents($fp);
+$visitas = (int)trim($contenido);
 $visitas++;
+ftruncate($fp, 0);
+rewind($fp);
+fwrite($fp, (string)$visitas);
+fflush($fp);
+flock($fp, LOCK_UN);
+fclose($fp);
 
-// Guarda el nuevo número de visitas en el archivo.
-file_put_contents($archivo, (string)$visitas, LOCK_EX);
+// marca la hora para la sesión
+$_SESSION['__ultima_visita'] = (string)$ahora;
 
-// Devuelve una respuesta JSON a la página con el conteo actualizado.
 echo json_encode(['ok' => true, 'visitas' => $visitas]);

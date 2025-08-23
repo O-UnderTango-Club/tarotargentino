@@ -37,29 +37,25 @@
   <script src="script.js" defer></script>
 
   <script>
-    document.addEventListener('DOMContentLoaded', async () => {
-      try {
-        const url = '/tarot/registrar_visita.php?ts=' + Date.now();
-        const r = await fetch(url, { method: 'GET', cache: 'no-store' });
+document.addEventListener('DOMContentLoaded', async () => {
+  // evita disparos dobles
+  if (window.__visita_enviada) return;
+  window.__visita_enviada = true;
 
-        if (!r.ok) {
-          const errorBody = await r.text();
-          console.error('Error del servidor:', r.status, errorBody);
-          return;
-        }
-
-        const data = await r.json();
-
-        if (data && typeof data.visitas !== 'undefined') {
-          const lbl = document.getElementById('contadorVisitas');
-          if (lbl) lbl.textContent = 'Visitas al sitio: ' + data.visitas;
-        } else {
-          console.error('La respuesta JSON no tiene el formato esperado:', data);
-        }
-      } catch (e) {
-        console.error('Error al procesar la respuesta:', e);
-      }
+  try {
+    const r = await fetch('registrar_visita.php?ts=' + Date.now(), {
+      method: 'POST',
+      cache: 'no-store',
+      keepalive: true,
+      headers: { 'Accept': 'application/json' }
     });
-  </script>
+    const d = await r.json();
+    const lbl = document.getElementById('contadorVisitas');
+    if (lbl && d?.visitas != null) lbl.textContent = 'Visitas al sitio: ' + d.visitas;
+  } catch (e) {
+    console.error('Error contador visitas:', e);
+  }
+});
+</script>
 </body>
 </html>
