@@ -1,7 +1,6 @@
 <?php
-// Si la petición es para el favicon, no hagas nada y termina el script.
-// Esto evita que el contador sume una segunda vez por la solicitud automática del ícono.
-if (isset($_SERVER['REQUEST_URI']) && $_SERVER['REQUEST_URI'] === '/favicon.ico') {
+// CORRECCIÓN: Ahora revisa la ruta completa incluyendo la carpeta /tarot/.
+if (isset($_SERVER['REQUEST_URI']) && strpos($_SERVER['REQUEST_URI'], 'favicon.ico') !== false) {
     exit();
 }
 
@@ -21,13 +20,12 @@ if (!file_exists($archivo)) {
 }
 
 // Lee el número actual de visitas, lo convierte a un entero.
-// El '@' suprime errores si el archivo no se puede leer, y trim() quita espacios.
 $visitas = (int)trim(@file_get_contents($archivo));
 
 // Incrementa el contador en uno.
 $visitas++;
 
-// Guarda el nuevo número de visitas en el archivo, asegurando la escritura (LOCK_EX).
+// Guarda el nuevo número de visitas en el archivo.
 file_put_contents($archivo, (string)$visitas, LOCK_EX);
 
 // Devuelve una respuesta JSON a la página con el conteo actualizado.
