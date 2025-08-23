@@ -40,27 +40,24 @@
     document.addEventListener('DOMContentLoaded', async () => {
       try {
         const url = '/tarot/registrar_visita.php?ts=' + Date.now();
-        // CORRECCIÓN 2: Se cambia el método a 'GET', que es el correcto para este caso.
         const r = await fetch(url, { method: 'GET', cache: 'no-store' });
-        const body = await r.text();
 
         if (!r.ok) {
-          console.error('HTTP', r.status, body);
+          const errorBody = await r.text();
+          console.error('Error del servidor:', r.status, errorBody);
           return;
         }
-        
-        // La lógica para interpretar la respuesta (JSON o texto) es robusta y se mantiene.
-        let visitas;
-        try {
-          visitas = JSON.parse(body).visitas;
-        } catch {
-          visitas = parseInt(body, 10) || 0;
-        }
 
-        const lbl = document.getElementById('contadorVisitas');
-        if (lbl) lbl.textContent = 'Visitas al sitio: ' + visitas;
+        const data = await r.json();
+
+        if (data && typeof data.visitas !== 'undefined') {
+          const lbl = document.getElementById('contadorVisitas');
+          if (lbl) lbl.textContent = 'Visitas al sitio: ' + data.visitas;
+        } else {
+          console.error('La respuesta JSON no tiene el formato esperado:', data);
+        }
       } catch (e) {
-        console.error('Error contador visitas:', e);
+        console.error('Error al procesar la respuesta:', e);
       }
     });
   </script>
