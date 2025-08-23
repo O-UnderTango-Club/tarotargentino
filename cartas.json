@@ -165,9 +165,32 @@
   "imagen": "assets/copas/6-de-copas-inocencia-con-bonarda.webp",
   "descripcion": "Seis copas sobre la mesa evocan memorias de infancia y cosechas compartidas. El 6 de Copas trae nostalgia amable, gestos de ternura y la alegría simple de lo conocido. Bonarda que reconcilia: mirar atrás para recordar quién sos y, desde ahí, volver a brindar.",
   "clave": "Nostalgia, ternura, memoria, reconciliación, alegría simple"
+  },
+  {
+  "palo": "copas",
+  "numero": 7,
+  "nombre": "7 de Copas",
+  "imagen": "assets/copas/7-de-copas-torrontes.webp",
+  "descripcion": "Siete copas relucen con promesas distintas: el torrontés aromático abre el abanico de deseos. El 7 de Copas muestra el catálogo de opciones y fantasías: algunas nutren, otras son puro espejismo. Elegí con lucidez, probá sin perder el norte y convertí una ilusión en plan concreto.",
+  "clave": "Opciones, fantasía, tentación, discernimiento, prioridades"
+  },
+  {
+  "palo": "copas",
+  "numero": 8,
+  "nombre": "8 de Copas",
+  "imagen": "assets/copas/8-de-copas-tempranillo.webp",
+  "descripcion": "Ocho copas forman un arco perfecto y, aun así, algo llama a partir. El 8 de Copas es madurez: dejar atrás lo que ya no nutre para buscar un sentido más hondo. Como un tempranillo bien criado, el adiós se hace con calma y respeto: se cierra una etapa para abrir otra más verdadera.",
+  "clave": "Desapego, partida, búsqueda interior, transición, maduración"
+  },
+  {
+  "palo": "copas",
+  "numero": 9,
+  "nombre": "9 de Copas",
+  "imagen": "assets/copas/9-de-copas-champagne.webp",
+  "descripcion": "Bajo fuegos artificiales, nueve copas de champagne brillan doradas: es el deseo cumplido. Satisfacción, abundancia y goce merecido; brindar por lo logrado con gratitud y disfrute simple, sin exceso ni culpa.",
+  "clave": "Deseo cumplido, satisfacción, abundancia, gratitud, celebración"
   }
 
 
 
-  
 ]
