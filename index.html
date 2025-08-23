@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Tarot Argentino</title>
   <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
 </head>
 <body>
   <h1>Bienvenido al Tarot Argentino</h1>
@@ -19,7 +20,7 @@
 
   <section class="secundaria">
     <h2>Dejá tu comentario</h2>
-    <form id="formComentario">
+    <form id="formComentario" action="/tarot/enviar_comentario.php" method="POST">
       <input type="text" name="nombre" placeholder="Tu nombre" required><br>
       <textarea name="comentario" placeholder="Escribí tu comentario (máx. 300 caracteres)" maxlength="300" required></textarea><br>
       <button type="submit">Enviar comentario</button>
@@ -35,21 +36,26 @@
 
   <script src="script.js" defer></script>
 
-  <!-- Contador de visitas -->
   <script>
     document.addEventListener('DOMContentLoaded', async () => {
       try {
         const url = '/tarot/registrar_visita.php?ts=' + Date.now();
-        const r = await fetch(url, { method: 'POST', cache: 'no-store' });
+        // CORRECCIÓN 2: Se cambia el método a 'GET', que es el correcto para este caso.
+        const r = await fetch(url, { method: 'GET', cache: 'no-store' });
         const body = await r.text();
 
         if (!r.ok) {
           console.error('HTTP', r.status, body);
           return;
         }
+        
+        // La lógica para interpretar la respuesta (JSON o texto) es robusta y se mantiene.
         let visitas;
-        try { visitas = JSON.parse(body).visitas; }
-        catch { visitas = parseInt(body, 10) || 0; }
+        try {
+          visitas = JSON.parse(body).visitas;
+        } catch {
+          visitas = parseInt(body, 10) || 0;
+        }
 
         const lbl = document.getElementById('contadorVisitas');
         if (lbl) lbl.textContent = 'Visitas al sitio: ' + visitas;
