@@ -189,7 +189,16 @@
   "imagen": "assets/copas/9-de-copas-champagne.webp",
   "descripcion": "Bajo fuegos artificiales, nueve copas de champagne brillan doradas: es el deseo cumplido. Satisfacción, abundancia y goce merecido; brindar por lo logrado con gratitud y disfrute simple, sin exceso ni culpa.",
   "clave": "Deseo cumplido, satisfacción, abundancia, gratitud, celebración"
-  }
+  },
+  {
+  "palo": "copas",
+  "numero": 10,
+  "nombre": "10 de Copas",
+  "imagen": "assets/copas/10-de-copas-bendiciones-sangria.webp",
+  "descripcion": "Farolitos, música y una jarra de sangría compartida: el 10 de Copas es bendición en familia y comunidad. Plenitud emocional, hogar contento y la sensación de que todo encaja. Se celebra lo construido juntos, con gratitud y amor que se reparte como brindis.",
+  "clave": "Plenitud emocional, armonía familiar, celebración, hogar, gratitud"
+}
+
 
 
 
