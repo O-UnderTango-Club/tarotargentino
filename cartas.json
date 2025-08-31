@@ -197,9 +197,23 @@
   "imagen": "assets/copas/10-de-copas-bendiciones-sangria.webp",
   "descripcion": "Farolitos, música y una jarra de sangría compartida: el 10 de Copas es bendición en familia y comunidad. Plenitud emocional, hogar contento y la sensación de que todo encaja. Se celebra lo construido juntos, con gratitud y amor que se reparte como brindis.",
   "clave": "Plenitud emocional, armonía familiar, celebración, hogar, gratitud"
+},
+{
+  "palo": "copas",
+  "numero": 11,
+  "nombre": "Sota de Copas (Sommelier)",
+  "imagen": "assets/copas/11-de-copas-sommelier.webp",
+  "descripcion": "El sommelier se anuncia como mensajero de emociones: trae noticias del corazón, invitaciones a brindar y sensibilidad para degustar cada sentimiento. La Sota de Copas abre el paladar del alma: curiosidad, estudio y primer amor por lo que conmueve.",
+  "clave": "Mensaje, sensibilidad, invitación, aprendizaje, creatividad"
+},
+{
+  "palo": "copas",
+  "numero": 12,
+  "nombre": "Caballo de Copas (Blend)",
+  "imagen": "assets/copas/12-de-copas-blend.webp",
+  "descripcion": "El anfitrión se levanta a brindar y ofrece un blend generoso: unión de variedades, unión de afectos. El Caballo de Copas avanza con tacto y calidez, llevando propuestas, reconciliaciones y encuentros. Es el gesto que acerca, la invitación que suaviza distancias.",
+  "clave": "Propuesta, movimiento afectivo, conciliación, romanticismo, diplomacia"
 }
-
-
 
 
 ]
