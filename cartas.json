@@ -213,7 +213,16 @@
   "imagen": "assets/copas/12-de-copas-blend.webp",
   "descripcion": "El anfitrión se levanta a brindar y ofrece un blend generoso: unión de variedades, unión de afectos. El Caballo de Copas avanza con tacto y calidez, llevando propuestas, reconciliaciones y encuentros. Es el gesto que acerca, la invitación que suaviza distancias.",
   "clave": "Propuesta, movimiento afectivo, conciliación, romanticismo, diplomacia"
+},
+{
+  "palo": "bastos",
+  "numero": 1,
+  "nombre": "As de Bastos",
+  "imagen": "assets/bastos/1-de-bastos.webp",
+  "descripcion": "Un mate recién cebado como bastón sagrado: nace la chispa, el impulso de empezar. El As de Bastos es energía disponible, coraje para actuar y semilla creativa que pide tierra y calor. Tomá la iniciativa y poné el cuerpo: el camino se abre al primer sorbo.",
+  "clave": "Inicio, energía, iniciativa, creatividad, emprendimiento"
 }
+
 
 
 ]
