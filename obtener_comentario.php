@@ -1,13 +1,14 @@
 <?php
-// obtener_comentarios.php
 header('Content-Type: application/json; charset=UTF-8');
 header('Cache-Control: no-cache');
 
-$archivo = 'comentarios.json';
-
+$archivo = __DIR__ . '/comentarios.json';
 if (file_exists($archivo)) {
-    echo file_get_contents($archivo);
+  $json = file_get_contents($archivo);
+  // fallback defensivo si el archivo está vacío/corrupto
+  json_decode($json);
+  if (json_last_error() !== JSON_ERROR_NONE) { echo '[]'; exit; }
+  echo $json;
 } else {
-    echo json_encode([]);
+  echo json_encode([]);
 }
-?>

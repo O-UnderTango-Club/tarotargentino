@@ -1,124 +1,173 @@
-// Espera a que todo el contenido del DOM esté cargado para evitar errores
-document.addEventListener('DOMContentLoaded', () => {
+'use strict';
 
-    // --- MANEJO DEL FORMULARIO DE COMENTARIOS ---
-    const form = document.getElementById('formComentario');
-    if (form) {
-        form.addEventListener('submit', function(e) {
-            // Previene que la página se recargue al enviar
-            e.preventDefault();
-            const datos = new FormData(form);
+// ==============================
+// Utilidades simples
+// ==============================
+const $ = (sel) => document.querySelector(sel);
+const $$ = (sel) => document.querySelectorAll(sel);
 
-            // Envía los datos al PHP para guardarlos
-            // CORRECCIÓN: Se agrega la ruta completa /tarot/
-            fetch('/tarot/guardar_comentario.php', { 
-                method: 'POST',
-                body: datos
-            })
-            .then(r => r.json())
-            .then(data => {
-                if (data.success) {
-                    form.reset(); // Limpia el formulario
-                    cargarComentarios(); // Vuelve a cargar los comentarios para mostrar el nuevo
-                } else {
-                    alert(data.error || 'Hubo un error al guardar el comentario.');
-                }
-            })
-            .catch(error => {
-                console.error("Error al enviar comentario:", error);
-                alert("No se pudo conectar con el servidor para guardar el comentario.");
-            });
-        });
+// ==============================
+// Contador de visitas (al cargar)
+// ==============================
+document.addEventListener('DOMContentLoaded', async () => {
+  // evita múltiples envíos si hay recargas rápidas
+  if (window.__visita_enviada) return;
+  window.__visita_enviada = true;
+
+  try {
+    const r = await fetch('/tarot/registrar_visita.php?ts=' + Date.now(), {
+      method: 'POST',
+      cache: 'no-store',
+      keepalive: true,
+      headers: { 'Accept': 'application/json' }
+    });
+    if (!r.ok) throw new Error('HTTP ' + r.status);
+    const d = await r.json();
+    const lbl = $('#contadorVisitas');
+    if (lbl && d && typeof d.visitas !== 'undefined') {
+      lbl.textContent = 'Visitas al sitio: ' + d.visitas;
     }
-
-    // --- FUNCIÓN PARA CARGAR Y MOSTRAR COMENTARIOS (Versión corregida y robusta) ---
-    function cargarComentarios() {
-        // Se define el contenedor de comentarios al inicio de la función.
-        const contenedor = document.getElementById('listaComentarios');
-
-        // Si el contenedor no existe en la página, se detiene la función para evitar errores.
-        if (!contenedor) {
-            console.error("Error: No se encontró el elemento con id 'listaComentarios' en la página.");
-            return;
-        }
-
-        // Se agrega un timestamp a la URL para asegurar que la respuesta del servidor no venga de la caché.
-        // CORRECCIÓN: Se agrega la ruta completa /tarot/
-        fetch('/tarot/obtener_comentarios.php?ts=' + Date.now())
-            .then(response => {
-                // Se verifica si la respuesta del servidor fue exitosa (ej. código 200 OK).
-                // Si no lo fue (ej. error 404 o 500), se lanza un error para pasar al bloque .catch().
-                if (!response.ok) {
-                    throw new Error('Error del servidor: ' + response.status);
-                }
-                // Si la respuesta es exitosa, se convierte a formato JSON.
-                return response.json();
-            })
-            .then(comentarios => {
-                // Se limpia el contenido previo del contenedor.
-                contenedor.innerHTML = ''; 
-                
-                // Si no hay comentarios, se muestra un mensaje invitando a ser el primero.
-                if (comentarios.length === 0) {
-                    contenedor.innerHTML = '<p>Sé el primero en dejar un comentario.</p>';
-                    return;
-                }
-
-                // Se itera sobre cada comentario para crearlo y mostrarlo en la página.
-                comentarios.forEach(c => {
-                    const fecha = new Date(c.fecha);
-                    const fechaFormateada = fecha.toLocaleDateString('es-AR', { day: '2-digit', month: '2-digit', year: 'numeric' });
-                    
-                    // Se crea un nuevo elemento <div> para cada comentario.
-                    const comentarioDiv = document.createElement('div');
-                    comentarioDiv.classList.add('comentario-item');
-                    
-                    // Se asigna el contenido HTML al nuevo div.
-                    comentarioDiv.innerHTML = `<p>"${c.comentario}"</p><small><strong>${c.nombre}</strong> el ${fechaFormateada}</small><hr>`;
-                    
-                    // Se añade el nuevo comentario al contenedor principal.
-                    contenedor.appendChild(comentarioDiv);
-                });
-            })
-            .catch(error => {
-                // Si ocurre cualquier error en la cadena (de red, de servidor, de JSON), se captura aquí.
-                console.error("Error al cargar comentarios:", error);
-                // Se muestra un mensaje de error amigable al usuario en el contenedor.
-                contenedor.innerHTML = "<p>En este momento no se pueden cargar los comentarios. Intenta de nuevo más tarde.</p>";
-            });
-    }
-
-    // --- Carga inicial de comentarios ---
-    cargarComentarios();
-
+  } catch (e) {
+    console.error('Error contador visitas:', e);
+  }
 });
 
+// ==============================
+// Comentarios: enviar y listar
+// ==============================
+document.addEventListener('DOMContentLoaded', () => {
+  const form = $('#formComentario');
 
-// --- FUNCIÓN PARA TIRAR LA CARTA (esta puede quedar fuera del DOMContentLoaded) ---
-function tirarCarta() {
-    const pregunta = document.getElementById('pregunta').value.trim();
-    const resultado = document.getElementById('resultado');
+  // --- Envío de comentario ---
+  if (form) {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
 
-    if (!pregunta) {
-        alert('Por favor, escribí una pregunta');
-        return;
+      const datos = new FormData(form);
+
+      try {
+        const r = await fetch('/tarot/guardar_comentario.php', {
+          method: 'POST',
+          body: datos
+        });
+        if (!r.ok) throw new Error('HTTP ' + r.status);
+
+        const data = await r.json();
+        if (data && data.success) {
+          form.reset();
+          await cargarComentarios(); // refresca la lista
+        } else {
+          alert((data && data.error) || 'Hubo un error al guardar el comentario.');
+        }
+      } catch (err) {
+        console.error('Error al enviar comentario:', err);
+        alert('No se pudo conectar con el servidor para guardar el comentario.');
+      }
+    });
+  }
+
+  // --- Carga inicial de comentarios ---
+  cargarComentarios();
+});
+
+/**
+ * Carga y muestra los comentarios desde el servidor.
+ * Usa el endpoint SINGULAR: obtener_comentario.php
+ */
+async function cargarComentarios() {
+  const contenedor = $('#listaComentarios');
+  if (!contenedor) {
+    console.error("No se encontró el elemento con id 'listaComentarios'.");
+    return;
+  }
+
+  // indicador simple de carga
+  contenedor.innerHTML = '<p>Cargando comentarios…</p>';
+
+  try {
+    const r = await fetch('/tarot/obtener_comentario.php?ts=' + Date.now(), {
+      cache: 'no-store',
+      headers: { 'Accept': 'application/json' }
+    });
+    if (!r.ok) throw new Error('HTTP ' + r.status);
+
+    const comentarios = await r.json();
+
+    contenedor.innerHTML = '';
+
+    if (!Array.isArray(comentarios) || comentarios.length === 0) {
+      contenedor.innerHTML = '<p>Sé el primero en dejar un comentario.</p>';
+      return;
     }
 
-    // Asegúrate de tener el archivo cartas.json en la ruta correcta
-    // CORRECCIÓN: Se agrega la ruta completa /tarot/
-    fetch('/tarot/cartas.json')
-        .then(response => response.json())
-        .then(cartas => {
-            const carta = cartas[Math.floor(Math.random() * cartas.length)];
+    comentarios.forEach((c) => {
+      const fecha = new Date(c.fecha);
+      const fechaFormateada = isNaN(fecha)
+        ? (c.fecha || '')
+        : fecha.toLocaleDateString('es-AR', { day: '2-digit', month: '2-digit', year: 'numeric' });
 
-            resultado.innerHTML = `
-                <p>Tu carta es: <strong>${carta.nombre}</strong></p>
-                <img src="/tarot/${carta.imagen}" alt="${carta.nombre}">
-                <p>${carta.texto}</p>
-            `;
-        })
-        .catch(error => {
-            resultado.innerHTML = "<p>Error al cargar las cartas del tarot.</p>";
-            console.error(error);
-        });
+      const div = document.createElement('div');
+      div.className = 'comentario-item';
+      div.innerHTML = `
+        <p>"${escapeHtml(c.comentario || '')}"</p>
+        <small><strong>${escapeHtml(c.nombre || 'Anónimo')}</strong> el ${fechaFormateada}</small>
+        <hr>
+      `;
+      contenedor.appendChild(div);
+    });
+  } catch (err) {
+    console.error('Error al cargar comentarios:', err);
+    contenedor.innerHTML = '<p>En este momento no se pueden cargar los comentarios. Intentá de nuevo más tarde.</p>';
+  }
 }
+
+// Pequeña utilidad para evitar inyectar HTML desde el JSON
+function escapeHtml(str) {
+  return String(str)
+    .replaceAll('&', '&amp;')
+    .replaceAll('<', '&lt;')
+    .replaceAll('>', '&gt;')
+    .replaceAll('"', '&quot;')
+    .replaceAll("'", '&#039;');
+}
+
+// ==============================
+// Tarot: tirar carta
+// ==============================
+async function tirarCarta() {
+  const preguntaEl = $('#pregunta');
+  const resultado = $('#resultado');
+
+  if (!preguntaEl || !resultado) return;
+
+  const pregunta = (preguntaEl.value || '').trim();
+  if (!pregunta) {
+    alert('Por favor, escribí una pregunta');
+    return;
+  }
+
+  try {
+    const r = await fetch('/tarot/cartas.json?ts=' + Date.now(), { cache: 'no-store' });
+    if (!r.ok) throw new Error('HTTP ' + r.status);
+    const cartas = await r.json();
+
+    if (!Array.isArray(cartas) || cartas.length === 0) {
+      resultado.innerHTML = '<p>No hay cartas disponibles.</p>';
+      return;
+    }
+
+    const carta = cartas[Math.floor(Math.random() * cartas.length)];
+
+    resultado.innerHTML = `
+      <p>Tu carta es: <strong>${escapeHtml(carta.nombre || 'Carta')}</strong></p>
+      <img src="/tarot/${escapeHtml(carta.imagen || '')}" alt="${escapeHtml(carta.nombre || 'Carta')}">
+      <p>${escapeHtml(carta.texto || '')}</p>
+    `;
+  } catch (err) {
+    console.error('Error al cargar cartas:', err);
+    resultado.innerHTML = '<p>Error al cargar las cartas del tarot.</p>';
+  }
+}
+
+// Exponer tirarCarta al scope global para el botón inline
+window.tirarCarta = tirarCarta;

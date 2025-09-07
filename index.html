@@ -20,11 +20,11 @@
 
   <section class="secundaria">
     <h2>Dejá tu comentario</h2>
-    <form id="formComentario" action="/tarot/enviar_comentario.php" method="POST">
-      <input type="text" name="nombre" placeholder="Tu nombre" required><br>
-      <textarea name="comentario" placeholder="Escribí tu comentario (máx. 300 caracteres)" maxlength="300" required></textarea><br>
-      <button type="submit">Enviar comentario</button>
-    </form>
+    <form id="formComentario" action="/tarot/guardar_comentario.php" method="POST">
+  <input type="text" name="nombre" placeholder="Tu nombre" required><br>
+  <textarea name="comentario" placeholder="Escribí tu comentario (máx. 300 caracteres)" maxlength="300" required></textarea><br>
+  <button type="submit">Enviar comentario</button>
+</form>
     <div id="listaComentarios"></div>
 
     <p id="contadorVisitas">Visitas al sitio: —</p>
