@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const datos = new FormData(form);
 
             // Envía los datos al PHP para guardarlos
-            fetch('/tarot/guardar_comentario.php', { // Asegúrate de que la ruta sea correcta
+            fetch('guardar_comentario.php', { // Asegúrate de que la ruta sea correcta
                 method: 'POST',
                 body: datos
             })
@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Esta función ahora pide los comentarios al PHP para evitar problemas de caché
     function cargarComentarios() {
         // Se agrega un timestamp para asegurar que la respuesta no venga de la caché
-        fetch('/tarot/obtener_comentarios.php?ts=' + Date.now()) // Asegúrate de que la ruta sea correcta
+        fetch('obtener_comentarios.php?ts=' + Date.now()) // Asegúrate de que la ruta sea correcta
             .then(r => r.json())
             .then(comentarios => {
                 const contenedor = document.getElementById('listaComentarios');
