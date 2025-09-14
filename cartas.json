@@ -221,6 +221,14 @@
   "imagen": "assets/bastos/1-de-bastos.webp",
   "descripcion": "Un mate recién cebado como bastón sagrado: nace la chispa, el impulso de empezar. El As de Bastos es energía disponible, coraje para actuar y semilla creativa que pide tierra y calor. Tomá la iniciativa y poné el cuerpo: el camino se abre al primer sorbo.",
   "clave": "Inicio, energía, iniciativa, creatividad, emprendimiento"
+},
+{
+  "palo": "bastos",
+  "numero": 2,
+  "nombre": "2 de Bastos (El Ombú)",
+  "imagen": "assets/bastos/2-de-bastos.webp",
+  "descripcion": "Bajo el ombú, árbol-faro de la llanura, se traza el plan. El 2 de Bastos mira el horizonte y elige rumbo: mapa en mano, ideas claras y pie listo para el primer paso fuera de lo conocido. Es tiempo de definir estrategia, asociarse y proyectar en grande.",
+  "clave": "Planificación, visión, decisión, asociaciones, expansión"
 }
 
 
