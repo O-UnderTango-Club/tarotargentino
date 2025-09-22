@@ -229,8 +229,14 @@
   "imagen": "assets/bastos/2-de-bastos.webp",
   "descripcion": "Bajo el ombú, árbol-faro de la llanura, se traza el plan. El 2 de Bastos mira el horizonte y elige rumbo: mapa en mano, ideas claras y pie listo para el primer paso fuera de lo conocido. Es tiempo de definir estrategia, asociarse y proyectar en grande.",
   "clave": "Planificación, visión, decisión, asociaciones, expansión"
+},
+{
+  "palo": "bastos",
+  "numero": 3,
+  "nombre": "3 de Bastos",
+  "imagen": "assets/bastos/3-de-bastos.webp",
+  "descripcion": "Hileras de soja avanzan hacia el horizonte: el 3 de Bastos confirma expansión y proyección. La siembra ya está hecha y empieza a verse el crecimiento sostenido. Es momento de abrir mercados, coordinar aliados y dejar que el plan escale con confianza.",
+  "clave": "Expansión, crecimiento, abundancia, proyección, alianzas"
 }
-
-
 
 ]
