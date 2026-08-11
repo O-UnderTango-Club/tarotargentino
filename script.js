@@ -1,7 +1,7 @@
 'use strict';
 
 const $ = (sel) => document.querySelector(sel);
-
+const BASE_PATH = '/tarot/';
 const MERCADO_PAGO_URL = 'https://link.mercadopago.com.ar/tarotargentino';
 
 let cartasCache = null;
@@ -24,10 +24,16 @@ function palabrasClave(carta) {
   return carta.clave || carta.palabras_clave || '';
 }
 
+function rutaProyecto(path) {
+  if (!path) return '';
+  if (/^(https?:)?\/\//i.test(path)) return path;
+  return BASE_PATH + String(path).replace(/^\/+/, '');
+}
+
 async function cargarCartas() {
   if (Array.isArray(cartasCache) && cartasCache.length) return cartasCache;
 
-  const respuesta = await fetch('cartas.json?ts=' + Date.now(), { cache: 'no-store' });
+  const respuesta = await fetch(BASE_PATH + 'cartas.json?ts=' + Date.now(), { cache: 'no-store' });
   if (!respuesta.ok) throw new Error('No se pudo cargar cartas.json (HTTP ' + respuesta.status + ')');
 
   const cartas = await respuesta.json();
@@ -68,7 +74,7 @@ function renderCarta(carta) {
   const nombre = carta.nombre || 'Carta';
   const descripcion = descripcionCarta(carta);
   const clave = palabrasClave(carta);
-  const imagen = carta.imagen || '';
+  const imagen = rutaProyecto(carta.imagen || '');
   const palo = carta.palo ? ` · ${carta.palo}` : '';
 
   resultado.innerHTML = `
