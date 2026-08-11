@@ -1,61 +1,119 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es-AR">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Tarot Argentino</title>
+  <meta name="theme-color" content="#0d1b2a" />
+  <meta name="description" content="Tarot Argentino: una baraja viva inspirada en símbolos, paisajes y cultura argentina. Hacé una pregunta y recibí una carta gratis." />
+  <meta property="og:title" content="Tarot Argentino" />
+  <meta property="og:description" content="Una pregunta. Una carta. Un símbolo argentino." />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="es_AR" />
+  <title>Tarot Argentino — Una carta para tu pregunta</title>
   <link rel="stylesheet" href="style.css" />
-  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
 </head>
 <body>
-  <h1>Bienvenido al Tarot Argentino</h1>
+  <div class="page-shell">
+    <header class="site-header">
+      <a class="brand" href="./" aria-label="Tarot Argentino, inicio">
+        <span class="brand-mark" aria-hidden="true">✦</span>
+        <span>Tarot Argentino</span>
+      </a>
+      <span class="header-note">Baraja viva · Argentina</span>
+    </header>
 
-  <p>Hacé tu pregunta y revelá tu destino...</p>
-  <input type="text" id="pregunta" placeholder="Escribí tu pregunta" />
-  <button onclick="tirarCarta()">Tirar carta</button>
+    <main>
+      <section class="hero" aria-labelledby="titulo-principal">
+        <div class="hero-copy">
+          <p class="eyebrow">Una pregunta · una carta · un símbolo argentino</p>
+          <h1 id="titulo-principal">Preguntale al<br><em>Tarot Argentino</em></h1>
+          <p class="intro">Una baraja construida carta por carta con paisajes, objetos, personajes, vinos, naturaleza y sensibilidad argentina.</p>
 
-  <div id="resultado" class="carta"></div>
+          <form id="formTarot" class="question-card" novalidate>
+            <label for="pregunta">¿Qué querés preguntar?</label>
+            <div class="question-row">
+              <input
+                type="text"
+                id="pregunta"
+                name="pregunta"
+                maxlength="180"
+                autocomplete="off"
+                placeholder="Escribí tu pregunta…"
+                aria-describedby="pregunta-ayuda"
+                required
+              />
+              <button id="botonTirada" class="primary-button" type="submit">Tirar una carta</button>
+            </div>
+            <div class="question-meta">
+              <small id="pregunta-ayuda">La consulta es gratuita y tu pregunta no se guarda.</small>
+              <small id="deckCount" aria-live="polite"></small>
+            </div>
+            <p id="formError" class="form-error" role="alert" hidden></p>
+          </form>
+        </div>
 
-  <div class="scroll-espacio"></div>
+        <div class="hero-symbol" aria-hidden="true">
+          <div class="sun-disc"><span>☼</span></div>
+          <p>Destino · intuición · territorio</p>
+        </div>
+      </section>
 
-  <section class="secundaria">
-    <h2>Dejá tu comentario</h2>
-    <form id="formComentario" action="/tarot/guardar_comentario.php" method="POST">
-  <input type="text" name="nombre" placeholder="Tu nombre" required><br>
-  <textarea name="comentario" placeholder="Escribí tu comentario (máx. 300 caracteres)" maxlength="300" required></textarea><br>
-  <button type="submit">Enviar comentario</button>
-</form>
-    <div id="listaComentarios"></div>
+      <section id="resultado" class="resultado" aria-live="polite" aria-atomic="true"></section>
 
-    <p id="contadorVisitas">Visitas al sitio: —</p>
-  </section>
+      <section id="accionesLectura" class="reading-actions" hidden>
+        <button id="shareButton" class="secondary-button" type="button">Compartir mi carta</button>
+        <button id="resetButton" class="text-button" type="button">Hacer otra pregunta</button>
+      </section>
 
-  <footer class="footer-aviso">
-    Sitio en construcción — Última actualización: 11/08/2026 - Tarot Argentino - Ø.
-  </footer>
+      <section id="apoyo" class="support-card" hidden>
+        <div>
+          <p class="eyebrow">Si la carta te acompañó</p>
+          <h2>Ayudá a que la baraja siga creciendo.</h2>
+          <p>Tarot Argentino mantiene la consulta gratuita. Tu aporte ayuda a crear nuevas cartas, mejorar el sitio y sostener el proyecto.</p>
+        </div>
+        <a id="supportLink" class="support-button" href="#" target="_blank" rel="noopener noreferrer">Apoyar por Mercado Pago</a>
+      </section>
+
+      <section class="manifesto" aria-label="Sobre Tarot Argentino">
+        <p class="eyebrow">Una obra en crecimiento</p>
+        <h2>No es un tarot importado con otro nombre.</h2>
+        <p>El lenguaje del tarot se traduce a una sensibilidad argentina. La idea original del proyecto es crecer con paciencia: sumar cartas y funciones como quien cuida una planta.</p>
+        <div class="manifesto-grid">
+          <div><strong>Bastos</strong><span>Naturaleza argentina</span></div>
+          <div><strong>Copas</strong><span>Vinos argentinos</span></div>
+          <div><strong>Espadas</strong><span>Tango y sentimientos</span></div>
+          <div><strong>Oros</strong><span>Cosas valiosas argentinas</span></div>
+        </div>
+      </section>
+
+      <section class="principles" aria-label="Principios del proyecto">
+        <article>
+          <span>01</span>
+          <h3>Gratis primero</h3>
+          <p>La experiencia principal no tiene barreras ni registro.</p>
+        </article>
+        <article>
+          <span>02</span>
+          <h3>Argentino de verdad</h3>
+          <p>Cada carta busca una traducción cultural propia, no una decoración superficial.</p>
+        </article>
+        <article>
+          <span>03</span>
+          <h3>Crecimiento lento</h3>
+          <p>La baraja está viva y seguirá ampliándose con nuevas cartas y tiradas.</p>
+        </article>
+      </section>
+
+      <p class="disclaimer">Tarot Argentino propone una experiencia simbólica y reflexiva. No reemplaza asesoramiento médico, legal, financiero ni profesional.</p>
+    </main>
+
+    <footer class="site-footer">
+      <span>Tarot Argentino · 2026</span>
+      <span>Una baraja argentina en construcción permanente.</span>
+    </footer>
+  </div>
 
   <script src="script.js" defer></script>
-
-  <script>
-document.addEventListener('DOMContentLoaded', async () => {
-  // evita disparos dobles
-  if (window.__visita_enviada) return;
-  window.__visita_enviada = true;
-
-  try {
-    const r = await fetch('registrar_visita.php?ts=' + Date.now(), {
-      method: 'POST',
-      cache: 'no-store',
-      keepalive: true,
-      headers: { 'Accept': 'application/json' }
-    });
-    const d = await r.json();
-    const lbl = document.getElementById('contadorVisitas');
-    if (lbl && d?.visitas != null) lbl.textContent = 'Visitas al sitio: ' + d.visitas;
-  } catch (e) {
-    console.error('Error contador visitas:', e);
-  }
-});
-</script>
 </body>
 </html>
