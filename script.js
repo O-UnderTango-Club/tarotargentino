@@ -2,9 +2,7 @@
 
 const $ = (sel) => document.querySelector(sel);
 
-// Pegaremos acá el link real cuando esté definido.
-// Mientras esté vacío, la tarjeta de apoyo no se muestra.
-const MERCADO_PAGO_URL = '';
+const MERCADO_PAGO_URL = 'https://link.mercadopago.com.ar/tarotargentino';
 
 let cartasCache = null;
 let cartaActual = null;
