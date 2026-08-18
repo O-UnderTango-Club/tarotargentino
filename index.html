@@ -11,6 +11,7 @@
   <meta property="og:locale" content="es_AR" />
   <title>Tarot Argentino — Una carta para tu pregunta</title>
   <link rel="stylesheet" href="/tarot/style.css?v=20260811-1" />
+  <link rel="stylesheet" href="/tarot/ritual-v1.css?v=20260818-1" />
   <link rel="icon" href="/tarot/favicon.ico" type="image/x-icon" />
 </head>
 <body>
@@ -31,7 +32,7 @@
           <p class="intro">Una baraja construida carta por carta con paisajes, objetos, personajes, vinos, naturaleza y sensibilidad argentina.</p>
 
           <form id="formTarot" class="question-card" novalidate>
-            <label for="pregunta">¿Qué querés preguntar?</label>
+            <label for="pregunta">¿Qué querés mirar hoy?</label>
             <div class="question-row">
               <input
                 type="text"
@@ -39,14 +40,13 @@
                 name="pregunta"
                 maxlength="180"
                 autocomplete="off"
-                placeholder="Escribí tu pregunta…"
+                placeholder="Escribí tu pregunta… (opcional)"
                 aria-describedby="pregunta-ayuda"
-                required
               />
-              <button id="botonTirada" class="primary-button" type="submit">Tirar una carta</button>
+              <button id="botonTirada" class="primary-button" type="submit">Comenzar mi tirada</button>
             </div>
             <div class="question-meta">
-              <small id="pregunta-ayuda">La consulta es gratuita y tu pregunta no se guarda.</small>
+              <small id="pregunta-ayuda">Podés preguntar algo concreto o simplemente dejar que aparezca una carta. Gratis y sin registro.</small>
               <small id="deckCount" aria-live="polite"></small>
             </div>
             <p id="formError" class="form-error" role="alert" hidden></p>
@@ -56,6 +56,19 @@
         <div class="hero-symbol" aria-hidden="true">
           <div class="sun-disc"><span>☼</span></div>
           <p>Destino · intuición · territorio</p>
+        </div>
+      </section>
+
+      <section id="ritual" class="ritual" hidden aria-labelledby="ritualTitle">
+        <div class="ritual-copy">
+          <p class="eyebrow">Tu tirada · una carta</p>
+          <h2 id="ritualTitle">Elegí la que te llame.</h2>
+          <p id="ritualQuestion" class="ritual-question"></p>
+          <p class="ritual-hint">No hay una carta correcta. Miralas un momento, mové el dedo y elegí una.</p>
+        </div>
+        <div id="ritualDeck" class="ritual-deck" role="group" aria-label="Cartas boca abajo para elegir"></div>
+        <div class="ritual-footer">
+          <button id="ritualCancel" class="text-button" type="button">Volver a mi pregunta</button>
         </div>
       </section>
 
@@ -114,6 +127,6 @@
     </footer>
   </div>
 
-  <script src="/tarot/script.js?v=20260811-1" defer></script>
+  <script src="/tarot/script.js?v=20260818-1" defer></script>
 </body>
 </html>
