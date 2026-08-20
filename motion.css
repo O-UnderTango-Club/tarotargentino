@@ -27,13 +27,41 @@
   pointer-events: none;
 }
 
+.shuffle-ghost {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(232, 201, 120, 0.34);
+  border-radius: 16px;
+  background:
+    radial-gradient(circle at 50% 42%, rgba(232, 201, 120, 0.11), transparent 34%),
+    repeating-conic-gradient(from 0deg, rgba(232, 201, 120, 0.08) 0deg 1deg, transparent 1deg 15deg),
+    linear-gradient(160deg, #173a4d 0%, #0d1b2a 58%, #141522 100%);
+  color: rgba(232, 201, 120, 0.44);
+  box-shadow: 0 18px 44px rgba(13, 27, 42, 0.12);
+  opacity: 0;
+  transform: translate3d(0, 0, -1px) rotateZ(0deg) scale(.985);
+  transition:
+    opacity 220ms ease,
+    transform 520ms cubic-bezier(.22, .75, .18, 1);
+  pointer-events: none;
+}
+
+.shuffle-ghost span {
+  font-size: clamp(2rem, 6vw, 4rem);
+}
+
 .card-flipper {
   position: relative;
-  z-index: 1;
+  z-index: 2;
   width: 100%;
   aspect-ratio: 2 / 3;
   transform-style: preserve-3d;
-  transition: transform 900ms cubic-bezier(.18, .72, .16, 1);
+  transition:
+    transform 900ms cubic-bezier(.18, .72, .16, 1),
+    filter 450ms ease;
   will-change: transform;
 }
 
@@ -102,8 +130,64 @@
   color: rgba(247, 240, 226, 0.62);
 }
 
+.card-reading.is-shuffling .shuffle-ghost {
+  opacity: .78;
+}
+
+.card-reading.is-shuffling .shuffle-ghost-left {
+  animation: tarotGhostLeft 980ms cubic-bezier(.35, .08, .22, 1) both;
+}
+
+.card-reading.is-shuffling .shuffle-ghost-right {
+  animation: tarotGhostRight 980ms cubic-bezier(.35, .08, .22, 1) both;
+}
+
 .card-reading.is-shuffling .card-flipper {
-  animation: tarotShuffle 620ms cubic-bezier(.35, .08, .22, 1) both;
+  animation: tarotShuffleCenter 980ms cubic-bezier(.35, .08, .22, 1) both;
+}
+
+.card-reading.is-cutting .shuffle-ghost {
+  opacity: .9;
+}
+
+.card-reading.is-cutting .shuffle-ghost-left {
+  transform: translate(-28px, -6px) rotateZ(-5.5deg) scale(.985);
+}
+
+.card-reading.is-cutting .shuffle-ghost-right {
+  transform: translate(28px, 8px) rotateZ(5.5deg) scale(.985);
+}
+
+.card-reading.is-cutting .card-flipper {
+  transform: translateY(-8px) rotateZ(-1deg) scale(1.012);
+  filter: drop-shadow(0 18px 24px rgba(13, 27, 42, 0.16));
+}
+
+.card-reading.is-pausing .shuffle-ghost {
+  opacity: .42;
+}
+
+.card-reading.is-pausing .shuffle-ghost-left {
+  transform: translate(-8px, 5px) rotateZ(-1.5deg) scale(.99);
+}
+
+.card-reading.is-pausing .shuffle-ghost-right {
+  transform: translate(8px, 7px) rotateZ(1.5deg) scale(.99);
+}
+
+.card-reading.is-pausing .card-flipper {
+  transform: translateY(-14px) scale(1.02);
+  filter: drop-shadow(0 22px 30px rgba(13, 27, 42, 0.2));
+}
+
+.card-reading.is-pausing .card-aura {
+  opacity: .28;
+  transform: scale(.88);
+}
+
+.card-reading.is-revealed .shuffle-ghost {
+  opacity: 0;
+  transform: translate(0, 10px) scale(.96);
 }
 
 .card-reading.is-revealed .card-flipper {
@@ -113,6 +197,11 @@
 .card-reading.is-revealed .card-aura {
   opacity: 1;
   transform: scale(1.08);
+}
+
+.card-reading.is-settled .card-aura {
+  opacity: .72;
+  transform: scale(1);
 }
 
 .card-reading .card-copy {
@@ -132,25 +221,35 @@
   animation: tarotKickerIn 500ms ease 720ms both;
 }
 
-@keyframes tarotShuffle {
-  0% {
-    transform: translateX(0) rotateZ(0deg) rotateY(0deg);
-  }
-  18% {
-    transform: translateX(-12px) rotateZ(-2.2deg) rotateY(-3deg);
-  }
-  42% {
-    transform: translateX(10px) rotateZ(1.8deg) rotateY(3deg);
-  }
-  64% {
-    transform: translateX(-6px) rotateZ(-1deg) rotateY(-2deg);
-  }
-  82% {
-    transform: translateX(4px) rotateZ(0.6deg) rotateY(1deg);
-  }
-  100% {
-    transform: translateX(0) rotateZ(0deg) rotateY(0deg);
-  }
+@keyframes tarotShuffleCenter {
+  0% { transform: translateX(0) rotateZ(0deg) translateY(0); }
+  14% { transform: translateX(-10px) rotateZ(-1.6deg) translateY(-2px); }
+  28% { transform: translateX(9px) rotateZ(1.4deg) translateY(1px); }
+  42% { transform: translateX(-7px) rotateZ(-1.1deg) translateY(-1px); }
+  58% { transform: translateX(8px) rotateZ(1.2deg) translateY(0); }
+  74% { transform: translateX(-5px) rotateZ(-.7deg) translateY(-1px); }
+  88% { transform: translateX(3px) rotateZ(.4deg) translateY(0); }
+  100% { transform: translateX(0) rotateZ(0deg) translateY(0); }
+}
+
+@keyframes tarotGhostLeft {
+  0% { transform: translate(0, 0) rotateZ(0deg) scale(.985); }
+  16% { transform: translate(-24px, -4px) rotateZ(-5deg) scale(.985); }
+  34% { transform: translate(12px, 3px) rotateZ(2.5deg) scale(.985); }
+  50% { transform: translate(-30px, 2px) rotateZ(-6.5deg) scale(.985); }
+  68% { transform: translate(9px, -2px) rotateZ(2deg) scale(.985); }
+  84% { transform: translate(-18px, 1px) rotateZ(-3.8deg) scale(.985); }
+  100% { transform: translate(-5px, 4px) rotateZ(-1deg) scale(.985); }
+}
+
+@keyframes tarotGhostRight {
+  0% { transform: translate(0, 0) rotateZ(0deg) scale(.985); }
+  16% { transform: translate(22px, 5px) rotateZ(4.5deg) scale(.985); }
+  34% { transform: translate(-10px, -2px) rotateZ(-2deg) scale(.985); }
+  50% { transform: translate(31px, -1px) rotateZ(6.5deg) scale(.985); }
+  68% { transform: translate(-8px, 3px) rotateZ(-1.7deg) scale(.985); }
+  84% { transform: translate(17px, 2px) rotateZ(3.6deg) scale(.985); }
+  100% { transform: translate(5px, 6px) rotateZ(1deg) scale(.985); }
 }
 
 @keyframes tarotButtonPulse {
@@ -181,6 +280,14 @@
     width: min(100%, 420px);
     margin: 0 auto;
   }
+
+  .card-reading.is-cutting .shuffle-ghost-left {
+    transform: translate(-18px, -5px) rotateZ(-4deg) scale(.985);
+  }
+
+  .card-reading.is-cutting .shuffle-ghost-right {
+    transform: translate(18px, 7px) rotateZ(4deg) scale(.985);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -190,11 +297,13 @@
 
   .card-flipper,
   .card-aura,
+  .shuffle-ghost,
   .card-reading .card-copy {
     transition: none;
   }
 
   .card-reading.is-shuffling .card-flipper,
+  .card-reading.is-shuffling .shuffle-ghost,
   .card-reading.is-revealed .card-kicker {
     animation: none;
   }
