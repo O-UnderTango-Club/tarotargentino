@@ -79,6 +79,7 @@ async function renderCarta(carta) {
 
   const acciones = $('#accionesLectura');
   const apoyo = $('#apoyo');
+  const boton = $('#botonTirada');
   if (acciones) acciones.hidden = true;
   if (apoyo) apoyo.hidden = true;
 
@@ -93,6 +94,8 @@ async function renderCarta(carta) {
     <article class="card-reading is-shuffling">
       <div class="card-image-wrap">
         <div class="card-aura" aria-hidden="true"></div>
+        <div class="shuffle-ghost shuffle-ghost-left" aria-hidden="true"><span>✦</span></div>
+        <div class="shuffle-ghost shuffle-ghost-right" aria-hidden="true"><span>✦</span></div>
         <div class="card-flipper">
           <div class="card-face card-face-back" aria-hidden="true">
             <div class="card-back-ornament"><span>✦</span></div>
@@ -124,19 +127,32 @@ async function renderCarta(carta) {
 
   resultado.scrollIntoView({ behavior: REDUCED_MOTION ? 'auto' : 'smooth', block: 'start' });
 
-  await esperar(680);
-
   const lectura = resultado.querySelector('.card-reading');
+
+  await esperar(1050);
   if (lectura) {
     lectura.classList.remove('is-shuffling');
+    lectura.classList.add('is-cutting');
+  }
+  if (boton) boton.textContent = 'Cortando…';
+
+  await esperar(650);
+  if (lectura) {
+    lectura.classList.remove('is-cutting');
+    lectura.classList.add('is-pausing');
+  }
+  if (boton) boton.textContent = 'La carta se acomoda…';
+
+  await esperar(520);
+  if (lectura) {
+    lectura.classList.remove('is-pausing');
     lectura.classList.add('is-revealed');
   }
-
-  const boton = $('#botonTirada');
   if (boton) boton.textContent = 'Revelando…';
 
-  await esperar(980);
+  await esperar(1050);
 
+  if (lectura) lectura.classList.add('is-settled');
   if (acciones) acciones.hidden = false;
   configurarApoyo();
   resultado.setAttribute('aria-busy', 'false');
