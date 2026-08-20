@@ -3,6 +3,7 @@
 const $ = (sel) => document.querySelector(sel);
 const BASE_PATH = '/tarot/';
 const MERCADO_PAGO_URL = 'https://link.mercadopago.com.ar/tarotargentino';
+const REDUCED_MOTION = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches ?? false;
 
 let cartasCache = null;
 let cartaActual = null;
@@ -14,6 +15,11 @@ function escapeHtml(str) {
     .replaceAll('>', '&gt;')
     .replaceAll('"', '&quot;')
     .replaceAll("'", '&#039;');
+}
+
+function esperar(ms) {
+  if (REDUCED_MOTION || ms <= 0) return Promise.resolve();
+  return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
 function descripcionCarta(carta) {
@@ -67,9 +73,14 @@ function configurarApoyo() {
   apoyo.hidden = false;
 }
 
-function renderCarta(carta) {
+async function renderCarta(carta) {
   const resultado = $('#resultado');
   if (!resultado) return;
+
+  const acciones = $('#accionesLectura');
+  const apoyo = $('#apoyo');
+  if (acciones) acciones.hidden = true;
+  if (apoyo) apoyo.hidden = true;
 
   const nombre = carta.nombre || 'Carta';
   const descripcion = descripcionCarta(carta);
@@ -77,11 +88,21 @@ function renderCarta(carta) {
   const imagen = rutaProyecto(carta.imagen || '');
   const palo = carta.palo ? ` · ${carta.palo}` : '';
 
+  resultado.setAttribute('aria-busy', 'true');
   resultado.innerHTML = `
-    <article class="card-reading">
+    <article class="card-reading is-shuffling">
       <div class="card-image-wrap">
-        <img id="cardImage" src="${escapeHtml(imagen)}" alt="${escapeHtml(nombre)}" loading="eager">
-        <div id="cardImageError" class="card-image-error" hidden>La ilustración de esta carta está siendo revisada.</div>
+        <div class="card-aura" aria-hidden="true"></div>
+        <div class="card-flipper">
+          <div class="card-face card-face-back" aria-hidden="true">
+            <div class="card-back-ornament"><span>✦</span></div>
+            <p class="card-back-label">Tarot Argentino</p>
+          </div>
+          <div class="card-face card-face-front">
+            <img id="cardImage" src="${escapeHtml(imagen)}" alt="${escapeHtml(nombre)}" loading="eager">
+            <div id="cardImageError" class="card-image-error" hidden>La ilustración de esta carta está siendo revisada.</div>
+          </div>
+        </div>
       </div>
       <div class="card-copy">
         <p class="card-kicker">Tu carta${escapeHtml(palo)}</p>
@@ -101,11 +122,24 @@ function renderCarta(carta) {
     }, { once: true });
   }
 
-  const acciones = $('#accionesLectura');
-  if (acciones) acciones.hidden = false;
+  resultado.scrollIntoView({ behavior: REDUCED_MOTION ? 'auto' : 'smooth', block: 'start' });
 
+  await esperar(680);
+
+  const lectura = resultado.querySelector('.card-reading');
+  if (lectura) {
+    lectura.classList.remove('is-shuffling');
+    lectura.classList.add('is-revealed');
+  }
+
+  const boton = $('#botonTirada');
+  if (boton) boton.textContent = 'Revelando…';
+
+  await esperar(980);
+
+  if (acciones) acciones.hidden = false;
   configurarApoyo();
-  resultado.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  resultado.setAttribute('aria-busy', 'false');
 }
 
 async function tirarCarta() {
@@ -128,7 +162,7 @@ async function tirarCarta() {
   try {
     const cartas = await cargarCartas();
     cartaActual = cartas[Math.floor(Math.random() * cartas.length)];
-    renderCarta(cartaActual);
+    await renderCarta(cartaActual);
   } catch (error) {
     console.error(error);
     mostrarError('No pudimos abrir la baraja en este momento. Probá de nuevo en unos segundos.');
@@ -174,7 +208,10 @@ function reiniciarLectura() {
   const apoyo = $('#apoyo');
   const pregunta = $('#pregunta');
 
-  if (resultado) resultado.innerHTML = '';
+  if (resultado) {
+    resultado.innerHTML = '';
+    resultado.removeAttribute('aria-busy');
+  }
   if (acciones) acciones.hidden = true;
   if (apoyo) apoyo.hidden = true;
   if (pregunta) {
@@ -183,7 +220,7 @@ function reiniciarLectura() {
   }
 
   limpiarError();
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+  window.scrollTo({ top: 0, behavior: REDUCED_MOTION ? 'auto' : 'smooth' });
 }
 
 document.addEventListener('DOMContentLoaded', async () => {
