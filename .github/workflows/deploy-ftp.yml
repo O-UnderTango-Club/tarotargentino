@@ -1,0 +1,56 @@
+name: Deploy Tarot Argentino
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: tarot-argentino-production
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install FTP client
+        run: sudo apt-get update && sudo apt-get install -y lftp jq
+
+      - name: Deploy to production hosting
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          FTP_HOST="$(jq -r '.host' .vscode/sftp.json)"
+          FTP_USER="$(jq -r '.username' .vscode/sftp.json)"
+          FTP_PASS="$(jq -r '.password' .vscode/sftp.json)"
+          FTP_PORT="$(jq -r '.port // 21' .vscode/sftp.json)"
+          FTP_REMOTE="$(jq -r '.remotePath // "/public_html/"' .vscode/sftp.json)"
+
+          echo "::add-mask::$FTP_PASS"
+
+          lftp <<LFTP
+          set ftp:ssl-allow no
+          set net:max-retries 2
+          set net:timeout 20
+          open -p "$FTP_PORT" "$FTP_HOST"
+          user "$FTP_USER" "$FTP_PASS"
+          mirror --reverse --verbose --parallel=4 \
+            --exclude-glob .git* \
+            --exclude-glob .github/ \
+            --exclude-glob .vscode/ \
+            --exclude-glob docs/ \
+            --exclude-glob README.md \
+            --exclude-glob desktop.ini \
+            ./ "$FTP_REMOTE"
+          bye
+          LFTP
