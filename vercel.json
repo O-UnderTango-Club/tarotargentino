@@ -1,0 +1,12 @@
+{
+  "rewrites": [
+    {
+      "source": "/tarot",
+      "destination": "/"
+    },
+    {
+      "source": "/tarot/:path*",
+      "destination": "/:path*"
+    }
+  ]
+}
